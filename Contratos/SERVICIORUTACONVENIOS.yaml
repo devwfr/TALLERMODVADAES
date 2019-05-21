@@ -1,0 +1,34 @@
+swagger: "2.0"
+info:
+  description: "Convenios"
+  version: "1.0.0"
+  title: "Ruta de Convenios"
+
+host: "localhost:9432"
+schemes:
+- "https"
+- "http"
+paths:
+  /consultarruta:
+    get:
+      summary: "ConsultarRuta"
+      operationId: "getruta"
+      parameters:
+      - in: "query"
+        type: "integer"
+        name: "prefFactura"
+        description: "Prefijo factura"
+        required: true
+      - in: "query"
+        type: "string"
+        name: "metodo"
+        description: "Metodo Requerido"
+        required: true  
+      responses:
+        200:
+          description: "Success" 
+          schema:
+            $ref: "https://gist.githubusercontent.com/devwfr/b57173ae37ad9d74ba116f6b3861edec/raw/e049504a30ba5365a0fc1e176ad1d26b19942bb5/RutaSchema.schema"
+        404:
+          description: "Error"
+ 

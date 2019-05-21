@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  description: "Facturacion de servicios"
+  version: "1.1.0"
+  title: "Facturacion de servicios"
+
+host: "localhost:9321"
+schemes:
+- "https"
+- "http"
+paths:
+  /consultarsaldofactura:
+    get:
+      summary: "ConsultarSaldoFactura"
+      operationId: "consultasaldo"
+      parameters:
+      - in: "query"
+        type: "integer"
+        name: "idFactura"
+        description: "Id factura"
+        required: true
+      responses:
+        200:
+          description: "Saldo Consultado Exitosamente"
+          schema:
+            $ref: "https://gist.githubusercontent.com/devwfr/d72ec934a72e435fb78cc9b0cdebc705/raw/6e507809095ec9ff943dd5a5dc2dd38a65994099/FacturaSchema"
+        404:
+          description: "Error en consulta de saldo de factura"
+  /pagarfactura:
+    post:
+      summary: "PagarFactura"
+      operationId: "pagar"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Factura a Pagar"
+        required: true
+        schema:
+          $ref: "https://gist.githubusercontent.com/devwfr/d72ec934a72e435fb78cc9b0cdebc705/raw/6e507809095ec9ff943dd5a5dc2dd38a65994099/FacturaSchema"
+      responses:
+        200:
+          description: "Factura Pagada Exitosamente"
+          schema:
+            $ref: "https://gist.githubusercontent.com/devwfr/46d080adb26270c7edcc41c45c4a8596/raw/c30c720efd96b3742557ff2b7f6d0ec06aae6b41/ResultadoPago.schema"
+  /compensarfactura:
+    post:
+      summary: "CompensarFactura"
+      operationId: "compensar"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Factura a Compensar"
+        required: true
+        schema:
+          $ref: "https://gist.githubusercontent.com/devwfr/d72ec934a72e435fb78cc9b0cdebc705/raw/6e507809095ec9ff943dd5a5dc2dd38a65994099/FacturaSchema"
+      responses:
+        200:
+          description: "Factura Compensada Exitosamente"
+          schema:
+            $ref: "https://gist.githubusercontent.com/devwfr/619d4c56af6edfd386395e7c0160f878/raw/456ecedecbe660ba0a6330d7308607c605b34e35/ResultadoCompensacion.schema"
+        404:
+          description: "Error en comepnsacion de factura"        

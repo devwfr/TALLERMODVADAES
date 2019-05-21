@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  description: "Facturacion de servicios"
+  version: "1.0.0"
+  title: "Facturacion de servicios"
+
+host: "localhost:9321"
+schemes:
+- "https"
+- "http"
+paths:
+  /consultarsaldofactura:
+    get:
+      summary: "ConsultarSaldoFactura"
+      operationId: "consultasaldo"
+      #consumes:
+      #- "application/json"
+      # produces:
+      #- "application/json"
+      parameters:
+      - in: "query"
+        type: "integer"
+        name: "idFactura"
+        description: "Id factura"
+        required: true
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Factura"
+        404:
+          description: "Error"
+definitions:
+  Factura:
+    type: "object"
+    properties:
+      valor:
+        type: "integer"
+        format: "int64"

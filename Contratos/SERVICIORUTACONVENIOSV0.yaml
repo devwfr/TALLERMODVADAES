@@ -1,0 +1,57 @@
+swagger: "2.0"
+info:
+  description: "Convenios"
+  version: "1.0.0"
+  title: "Ruta de Convenios"
+
+host: "localhost:9432"
+schemes:
+- "https"
+- "http"
+paths:
+  /consultarruta:
+    get:
+      summary: "ConsultarRuta"
+      operationId: "getruta"
+      #consumes:
+      #- "application/json"
+      # produces:
+      #- "application/json"
+      parameters:
+      - in: "query"
+        type: "integer"
+        name: "prefFactura"
+        description: "Prefijo factura"
+        required: true
+      - in: "query"
+        type: "string"
+        name: "metodo"
+        description: "Metodo Requerido"
+        required: true  
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Ruta"
+        404:
+          description: "Error"
+definitions:
+  Ruta:
+    type: "object"
+    properties:
+      prefijo:
+        type: "integer"
+      nombreconvenio:
+        type: "string"
+      url:
+        type: "string"
+      metodo:
+        type: "string"
+      plantilla:
+        type: "string"
+      contenttype:
+        type: "string"
+      tiposervicio:
+        type: "string"
+      respuesta:
+        type: "string"  
